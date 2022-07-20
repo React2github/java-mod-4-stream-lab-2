@@ -3,9 +3,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String[] input = scanner.nextLine().split("\\s+");
-        System.out.println(maxAbsoluteVal(input));
+        try (Scanner scanner = new Scanner(System.in)) {
+            String[] input = scanner.nextLine().split("\\s+");
+            System.out.println(maxAbsoluteVal(input));
+        }
     }
 
     /**
@@ -15,6 +16,6 @@ public class Main {
      * @return the maximum integer absolute value in the array
      */
     public static int maxAbsoluteVal(String[] numbers) {
-
+        return Arrays.stream(numbers).mapToInt(num -> Math.abs(Integer.parseInt(num))).max().getAsInt()
     }
 }
